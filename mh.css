@@ -1,15 +1,14 @@
 /*
-  @title        小嘟啤梨
-  @description  在消息气泡右上角添加 pig 装饰、左下角添加 pear 装饰，并为用户名增加细黑描边
-  @author       周姓吴先生
-  @updated      March 28, 2026, 12:00:00 PM HKT
+  @title        明晦小鸟
+  @description  在消息气泡右上角添加 bird 装饰、左下角添加 pear 装饰，并为用户名增加细黑描边
+  @author       千代雨海
+  @updated      March 31, 2026, 15:00:00
   @version      1.0.2
 */
 
 @layer custom-css {
     .event--message {
         --pig-deco: url("https://github.com/hzm200198/MingHui-CSS/blob/main/bird.png");
-        --pear-deco: url("https://dudu-1304160106.cos.ap-guangzhou.myqcloud.com/pear.svg");
         position: relative;
     }
 
