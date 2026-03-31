@@ -1,15 +1,18 @@
 /*
-  @title        明晦小鸟
-  @description  在消息气泡右上角添加 bird 装饰，并为用户名增加细黑描边
+  @title        明晦小鸟（多鸟随机装饰）
+  @description  在消息气泡右上角添加多种 bird 装饰，用户名细黑描边，每条消息按顺序展示不同小鸟
   @author       千代雨海
-  @updated      March 31, 2026, 15:00:00
-  @version      1.0.2
+  @updated      March 31, 2026, 16:00:00
+  @version      1.0.3
 */
 
-@layer custom-css {
+@layer custom-css { /* CSS 层，避免覆盖原样式 */
+
     .event--message {
-        --pig-deco: url("https://raw.githubusercontent.com/hzm200198/MingHui-CSS/main/bird.png");
-        position: relative;
+        --bird1: url("https://raw.githubusercontent.com/hzm200198/MingHui-CSS/main/bird1.png");
+        --bird2: url("https://raw.githubusercontent.com/hzm200198/MingHui-CSS/main/bird2.png");
+        --bird3: url("https://raw.githubusercontent.com/hzm200198/MingHui-CSS/main/bird3.png");
+        position: relative; /* 为伪元素提供定位基准 */
     }
 
     .event--message .username {
@@ -17,6 +20,7 @@
         --event-username-text-1: #ff9d00;
         --event-username-text-2: #00eaff;
         --event-username-text-3: #ffea00;
+
         text-shadow:
             calc(var(--1px) * 1) 0 0 #000,
             calc(var(--1px) * -1) 0 0 #000,
@@ -34,28 +38,26 @@
         --margin-top: 11;
     }
 
-    .event--message:not(.has-emotes)::after {
-        content: "";
-        position: absolute;
-        display: block;
-        width: calc(var(--1px) * 35);
-        height: calc(var(--1px) * 35);
-        left: calc(var(--1px) * 24);
-        bottom: calc(var(--1px) * -5);
-        background: var(--pear-deco) center / contain no-repeat;
-        pointer-events: none;
-        z-index: 3;
+    /* 利用 nth-child 实现周期性“随机”装饰 */
+    .event--message:nth-child(3n) .message::after {
+        --bird-deco: var(--bird1);
+    }
+    .event--message:nth-child(3n+1) .message::after {
+        --bird-deco: var(--bird2);
+    }
+    .event--message:nth-child(3n+2) .message::after {
+        --bird-deco: var(--bird3);
     }
 
+    /* 右上角鸟装饰伪元素 */
     .event--message:not(.has-emotes) .message::after {
         content: "";
         position: absolute;
-        display: block;
         width: calc(var(--1px) * 52);
         height: calc(var(--1px) * 52);
         right: calc(var(--1px) * -19);
         top: calc(var(--1px) * -25);
-        background: var(--pig-deco) center / contain no-repeat;
+        background: var(--bird-deco) center / contain no-repeat;
         pointer-events: none;
         z-index: 4;
         transform: scaleX(-1);
