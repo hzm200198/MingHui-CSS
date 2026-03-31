@@ -8,7 +8,7 @@
 
 @layer custom-css {
     .event--message {
-        --pig-deco: url("https://github.com/hzm200198/MingHui-CSS/blob/main/bird.png");
+        --pig-deco: url("https://raw.githubusercontent.com/hzm200198/MingHui-CSS/main/bird.png");
         position: relative;
     }
 
