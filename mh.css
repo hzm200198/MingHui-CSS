@@ -10,8 +10,8 @@
 
     .event--message {
         --bird1: url("https://raw.githubusercontent.com/hzm200198/MingHui-CSS/main/bird1.png");
-        --bird2: url("https://raw.githubusercontent.com/hzm200198/MingHui-CSS/main/bird2.png");
-        --bird3: url("https://raw.githubusercontent.com/hzm200198/MingHui-CSS/main/bird3.png");
+        --bird2: url("https://raw.githubusercontent.com/hzm200198/MingHui-CSS/main/bird2.jpg");
+        --bird3: url("https://raw.githubusercontent.com/hzm200198/MingHui-CSS/main/bird3.jpg");
         position: relative; /* 为伪元素提供定位基准 */
     }
 
