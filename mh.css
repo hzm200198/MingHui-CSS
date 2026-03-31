@@ -1,0 +1,70 @@
+/*
+  @title        小嘟啤梨
+  @description  在消息气泡右上角添加 pig 装饰、左下角添加 pear 装饰，并为用户名增加细黑描边
+  @author       周姓吴先生
+  @updated      March 28, 2026, 12:00:00 PM HKT
+  @version      1.0.2
+*/
+
+@layer custom-css {
+    .event--message {
+        --pig-deco: url("https://dudu-1304160106.cos.ap-guangzhou.myqcloud.com/pig.svg");
+        --pear-deco: url("https://dudu-1304160106.cos.ap-guangzhou.myqcloud.com/pear.svg");
+        position: relative;
+    }
+
+    .event--message .username {
+        --event-username-text-0: #fff;
+        --event-username-text-1: #ff9d00;
+        --event-username-text-2: #00eaff;
+        --event-username-text-3: #ffea00;
+        text-shadow:
+            calc(var(--1px) * 1) 0 0 #000,
+            calc(var(--1px) * -1) 0 0 #000,
+            0 calc(var(--1px) * 1) 0 #000,
+            0 calc(var(--1px) * -1) 0 #000;
+    }
+
+    .event--message:not(.has-emotes) .message {
+        position: relative;
+        overflow: visible !important;
+        z-index: 2;
+        max-width: calc(100% - var(--1px) * 44);
+        padding-left: calc(var(--1px) * 18);
+        padding-right: calc(var(--1px) * 18);
+        --margin-top: 11;
+    }
+
+    .event--message:not(.has-emotes)::after {
+        content: "";
+        position: absolute;
+        display: block;
+        width: calc(var(--1px) * 35);
+        height: calc(var(--1px) * 35);
+        left: calc(var(--1px) * 24);
+        bottom: calc(var(--1px) * -5);
+        background: var(--pear-deco) center / contain no-repeat;
+        pointer-events: none;
+        z-index: 3;
+    }
+
+    .event--message:not(.has-emotes) .message::after {
+        content: "";
+        position: absolute;
+        display: block;
+        width: calc(var(--1px) * 52);
+        height: calc(var(--1px) * 52);
+        right: calc(var(--1px) * -19);
+        top: calc(var(--1px) * -25);
+        background: var(--pig-deco) center / contain no-repeat;
+        pointer-events: none;
+        z-index: 4;
+        transform: scaleX(-1);
+        transform-origin: center;
+    }
+
+    .event-list {
+        -webkit-mask-image: none !important;
+        mask-image: none !important;
+    }
+}
